@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title style="text-align: center">Login</ion-title>
+  </ion-navbar>
+ 
+ </ion-header>
+ 
+ 
+ <ion-content padding>
+ <form *ngIf="login" [formGroup]="login" (ngLogin)="submit()">
+  <ion-item>
+    <ion-label></ion-label>
+    <ion-input formControlName="email"  placeholder="email"  type="text" [(ngModel)]="email"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="login.controls.email.invalid && login.controls.email.dirty">
+      <p>Enter your Email</p>
+    </ion-item>
+ 
+ <ion-item>
+    <ion-label></ion-label>
+    <ion-input formControlName="password"   placeholder="password"  type="password" [(ngModel)]="password"></ion-input>
+ </ion-item>
+
+ <ion-item *ngIf="login.controls.password.invalid && login.controls.password.dirty">
+ <p>Enter your Password</p>
+ </ion-item>
+ 
+ 
+ 
+ <div padding-horizontal>
+  <div class="form-error">{{loginError}}</div>
+  
+
+ <ion-list>
+   <ion-row>
+ <ion-col col-8>
+    <button ion-button (click)="submit()" [disabled]="login.invalid" >Login</button>
+
+  </ion-col>
+  <ion-col col-8>
+      <button ion-button  (click)="Signup()"> Sign up</button>
+</ion-col>
+</ion-row>
+
+<ion-row>
+    <ion-col col-6>
+      <button ion-button  (click)="loginUser()" >Log in with Google</button>
+    </ion-col>
+
+  <ion-col col-6>
+    <button ion-button  (click)="resetPassword()" >Reset Password</button>
+  </ion-col>
+</ion-row>
+ </ion-list>
+ </div>
+ </form>
+ </ion-content>
